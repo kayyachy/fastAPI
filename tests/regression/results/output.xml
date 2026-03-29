@@ -1,0 +1,2201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.9 on win32)" generated="2026-03-29T17:10:54.315421" rpa="false" schemaversion="5">
+<suite id="s1" name="Regression Tests" source="C:\Users\Mohammed\Desktop\code\fastapi_copilte\tests\regression\regression_tests.robot">
+<kw name="De API server is beschikbaar" owner="resources" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.481085" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.480949" elapsed="0.000277"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.480574" elapsed="0.000716"/>
+</kw>
+<test id="s1-t1" name="ROOT - De root endpoint geeft een HTTP 200 terug" line="14">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.482065" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.481965" elapsed="0.000494"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.481783" elapsed="0.000738"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.488766" level="INFO">GET Request : url=http://127.0.0.1:8000/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.488876" level="INFO">GET Response : url=http://127.0.0.1:8000/ 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '41', 'content-type': 'application/json'} 
+ body={"message":"Welkom bij FastAPI Copilte!"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.488984" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.483391" elapsed="0.005613"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.489444" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.489152" elapsed="0.000323"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.482867" elapsed="0.006651"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.490480" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.490046" elapsed="0.000484"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.489806" elapsed="0.000762"/>
+</kw>
+<tag>root</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-03-29T17:10:54.481335" elapsed="0.009429"/>
+</test>
+<test id="s1-t2" name="ROOT - Het welkomstbericht is correct" line="20">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.492000" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.491911" elapsed="0.000184"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.491754" elapsed="0.000377"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.494946" level="INFO">GET Request : url=http://127.0.0.1:8000/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.494995" level="INFO">GET Response : url=http://127.0.0.1:8000/ 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '41', 'content-type': 'application/json'} 
+ body={"message":"Welkom bij FastAPI Copilte!"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.495072" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.492604" elapsed="0.002485"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.495432" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.495200" elapsed="0.000260"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.492407" elapsed="0.003092"/>
+</kw>
+<kw name="Then Het veld &quot;message&quot; heeft waarde &quot;Welkom bij FastAPI Copilte!&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.496418" level="INFO">${body} = {'message': 'Welkom bij FastAPI Copilte!'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.496004" elapsed="0.000433"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.496527" elapsed="0.000204"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.495805" elapsed="0.000965"/>
+</kw>
+<tag>root</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-03-29T17:10:54.491347" elapsed="0.005653"/>
+</test>
+<test id="s1-t3" name="HEALTH - De health endpoint geeft een HTTP 200 terug" line="30">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.498399" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.498226" elapsed="0.000322"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.497965" elapsed="0.000628"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/health&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.501687" level="INFO">GET Request : url=http://127.0.0.1:8000/health 
+ path_url=/health 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.501734" level="INFO">GET Response : url=http://127.0.0.1:8000/health 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '15', 'content-type': 'application/json'} 
+ body={"status":"ok"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.501810" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.499080" elapsed="0.002747"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.502171" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.501947" elapsed="0.000252"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.498855" elapsed="0.003385"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.503286" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.502871" elapsed="0.000464"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.502633" elapsed="0.000743"/>
+</kw>
+<tag>health</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-03-29T17:10:54.497612" elapsed="0.005954"/>
+</test>
+<test id="s1-t4" name="HEALTH - De status is ok" line="36">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.504873" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.504775" elapsed="0.000212"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.504537" elapsed="0.000492"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/health&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.507922" level="INFO">GET Request : url=http://127.0.0.1:8000/health 
+ path_url=/health 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.507965" level="INFO">GET Response : url=http://127.0.0.1:8000/health 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '15', 'content-type': 'application/json'} 
+ body={"status":"ok"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.508039" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.505479" elapsed="0.002578"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.508389" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.508176" elapsed="0.000241"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.505286" elapsed="0.003169"/>
+</kw>
+<kw name="Then Het veld &quot;status&quot; heeft waarde &quot;ok&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.509353" level="INFO">${body} = {'status': 'ok'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.508948" elapsed="0.000424"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.509462" elapsed="0.000200"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.508739" elapsed="0.000964"/>
+</kw>
+<tag>health</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-03-29T17:10:54.504181" elapsed="0.005724"/>
+</test>
+<test id="s1-t5" name="GET PERSONEN - De lijst met personen is opvraagbaar" line="46">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.511225" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.511134" elapsed="0.000176"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.510975" elapsed="0.000372"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.514453" level="INFO">GET Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.514509" level="INFO">GET Response : url=http://127.0.0.1:8000/personen 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '6029', 'content-type': 'application/json'} 
+ body=[{"id":1,"naam":"Mohammed Al-Rashid","adres":"Keizersgracht 12","woonplaats":"Amsterdam","emailadres":"m.alrashid@gmail.com"},{"id":2,"naam":"Sophie de Vries","adres":"Lange Voorhout 5","woonplaats":"Den Haag","emailadres":"sophie.devries@hotmail.com"},{"id":3,"naam":"Lars Janssen","adres":"Marktstraat 8","woonplaats":"Utrecht","emailadres":"lars.janssen@outlook.com"},{"id":4,"naam":"Fatima El Ouali","adres":"Bergweg 33","woonplaats":"Rotterdam","emailadres":"f.elouali@gmail.com"},{"id":5,"naam":"Tim van den Berg","adres":"Dorpsstraat 17","woonplaats":"Eindhoven","emailadres":"tim.vandenberg@live.nl"},{"id":6,"naam":"Emma Bakker","adres":"Hoofdstraat 45","woonplaats":"Groningen","emailadres":"emma.bakker@gmail.com"},{"id":7,"naam":"Yusuf Özdemir","adres":"Stationsplein 2","woonplaats":"Tilburg","emailadres":"y.ozdemir@yahoo.com"},{"id":8,"naam":"Nora Visser","adres":"Parkweg 19","woonplaats":"Almere","emailadres":"nora.visser@hotmail.com"},{"id":9,"naam":"Daan Smit","adres":"Kerkstraat 7","woonplaats":"Breda","emailadres":"daan.smit@gmail.com"},{"id":10,"naam":"Lena Mulder","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"},{"id":11,"naam":"Ahmed Benali","adres":"Tulpstraat 3","woonplaats":"Haarlem","emailadres":"ahmed.benali@gmail.com"},{"id":12,"naam":"Julia Meijer","adres":"Rozenlaan 14","woonplaats":"Arnhem","emailadres":"julia.meijer@live.nl"},{"id":13,"naam":"Sander Boer","adres":"Industrieweg 55","woonplaats":"Enschede","emailadres":"sander.boer@hotmail.com"},{"id":14,"naam":"Yasmine Khalil","adres":"Vondelstraat 9","woonplaats":"Zwolle","emailadres":"y.khalil@gmail.com"},{"id":15,"naam":"Pieter de Jong","adres":"Nieuwstraat 22","woonplaats":"Apeldoorn","emailadres":"pieter.dejong@outlook.com"},{"id":16,"naam":"Sara Linders","adres":"Julianaweg 37","woonplaats":"Maastricht","emailadres":"sara.linders@gmail.com"},{"id":17,"naam":"Kevin Willems","adres":"Beatrixlaan 6","woonplaats":"Leiden","emailadres":"kevin.willems@yahoo.com"},{"id":18,"naam":"Amira Tahir","adres":"Koningstraat 50","woonplaats":"Dordrecht","emailadres":"amira.tahir@hotmail.com"},{"id":19,"naam":"Roos van Dijk","adres":"Willemstraat 11","woonplaats":"Zoetermeer","emailadres":"roos.vandijk@gmail.com"},{"id":20,"naam":"Niels Hermans","adres":"Prins Hendrikstraat 4","woonplaats":"Deventer","emailadres":"niels.hermans@live.nl"},{"id":21,"naam":"Bilal Chaoui","adres":"Vossenlaan 16","woonplaats":"Delft","emailadres":"bilal.chaoui@gmail.com"},{"id":22,"naam":"Merel Kok","adres":"Zonnebloemstraat 25","woonplaats":"Alkmaar","emailadres":"merel.kok@outlook.com"},{"id":23,"naam":"Joost Hendriks","adres":"Havenstraat 38","woonplaats":"Amersfoort","emailadres":"joost.hendriks@hotmail.com"},{"id":24,"naam":"Leila Nasser","adres":"Boslaan 21","woonplaats":"Venlo","emailadres":"leila.nasser@gmail.com"},{"id":25,"naam":"Bram Peters","adres":"Rembrandtstraat 44","woonplaats":"Helmond","emailadres":"bram.peters@yahoo.com"},{"id":26,"naam":"Iris Vermeer","adres":"Mozartlaan 10","woonplaats":"Leeuwarden","emailadres":"iris.vermeer@gmail.com"},{"id":27,"naam":"Omar Idrissi","adres":"Spinozaweg 29","woonplaats":"Zaandam","emailadres":"omar.idrissi@hotmail.com"},{"id":28,"naam":"Fleur Timmermans","adres":"Wilhelminalaan 3","woonplaats":"Ede","emailadres":"fleur.timmermans@outlook.com"},{"id":29,"naam":"Tom van Leeuwen","adres":"Erasmusstraat 18","woonplaats":"Hilversum","emailadres":"tom.vanleeuwen@live.nl"},{"id":30,"naam":"Nadia Hamid","adres":"Sophiastraat 41","woonplaats":"Roosendaal","emailadres":"nadia.hamid@gmail.com"},{"id":31,"naam":"Rick Kuijpers","adres":"Tramweg 13","woonplaats":"Spijkenisse","emailadres":"rick.kuijpers@hotmail.com"},{"id":32,"naam":"Mila Schouten","adres":"Chopinplein 7","woonplaats":"Emmen","emailadres":"mila.schouten@gmail.com"},{"id":33,"naam":"Karim Aouad","adres":"Lindelaan 30","woonplaats":"Capelle a/d IJssel","emailadres":"karim.aouad@yahoo.com"},{"id":34,"naam":"Denise van Rooij","adres":"Kastanjelaan 53","woonplaats":"Heerlen","emailadres":"denise.vanrooij@outlook.com"},{"id":35,"naam":"Mark Peeters","adres":"Schipholweg 26","woonplaats":"Sittard","emailadres":"mark.peeters@gmail.com"},{"id":36,"naam":"Hana Berrada","adres":"Populierenlaan 15","woonplaats":"Gouda","emailadres":"hana.berrada@hotmail.com"},{"id":37,"naam":"Stefan Dekker","adres":"Iepenlaan 48","woonplaats":"Purmerend","emailadres":"stefan.dekker@live.nl"},{"id":38,"naam":"Lotte Huisman","adres":"Beukenweg 36","woonplaats":"Hoorn","emailadres":"lotte.huisman@gmail.com"},{"id":39,"naam":"Anouar El Habti","adres":"Dennenlaan 9","woonplaats":"Alphen a/d Rijn","emailadres":"anouar.elhabti@outlook.com"},{"id":40,"naam":"Charlotte Engel","adres":"Magnoliapad 20","woonplaats":"Lelystad","emailadres":"charlotte.engel@hotmail.com"},{"id":41,"naam":"Jesse van Beek","adres":"Veluwelaan 34","woonplaats":"Harderwijk","emailadres":"jesse.vanbeek@gmail.com"},{"id":42,"naam":"Samira Ouali","adres":"Hertogstraat 5","woonplaats":"Bergen op Zoom","emailadres":"samira.ouali@yahoo.com"},{"id":43,"naam":"Wouter Groot","adres":"Lübeckstraat 27","woonplaats":"Nieuwegein","emailadres":"wouter.groot@outlook.com"},{"id":44,"naam":"Eva Brouwer","adres":"Azalealaan 43","woonplaats":"Weert","emailadres":"eva.brouwer@gmail.com"},{"id":45,"naam":"Tariq Mansouri","adres":"Dahliastraat 61","woonplaats":"Oss","emailadres":"tariq.mansouri@hotmail.com"},{"id":46,"naam":"Anna de Wit","adres":"Klimopweg 8","woonplaats":"Middelburg","emailadres":"anna.dewit@live.nl"},{"id":47,"naam":"Bas Vrijhoeven","adres":"Goudenregenstraat 32","woonplaats":"Drachten","emailadres":"bas.vrijhoeven@gmail.com"},{"id":48,"naam":"Layla Boukhari","adres":"Narcissusstraat 47","woonplaats":"Vlaardingen","emailadres":"layla.boukhari@outlook.com"},{"id":49,"naam":"Hugo van Ommen","adres":"Heideweg 6","woonplaats":"Veenendaal","emailadres":"hugo.vanommen@hotmail.com"},{"id":50,"naam":"Zara El Amrani","adres":"Seringenlaan 23","woonplaats":"Schiedam","emailadres":"zara.elamrani@gmail.com"}] 
+ </msg>
+<msg time="2026-03-29T17:10:54.514733" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.511817" elapsed="0.002935"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.515095" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.514873" elapsed="0.000248"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.511653" elapsed="0.003507"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.516987" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.515843" elapsed="0.001232"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.515611" elapsed="0.001538"/>
+</kw>
+<kw name="And De response een lijst is" owner="resources">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.518430" level="INFO">${body} = [{'id': 1, 'naam': 'Mohammed Al-Rashid', 'adres': 'Keizersgracht 12', 'woonplaats': 'Amsterdam', 'emailadres': 'm.alrashid@gmail.com'}, {'id': 2, 'naam': 'Sophie de Vries', 'adres': 'Lange Voorhout 5'...</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.517769" elapsed="0.000696"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.518993" level="INFO">Length is 50.</msg>
+<arg>${body}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.518573" elapsed="0.000459"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.517567" elapsed="0.001513"/>
+</kw>
+<tag>get</tag>
+<tag>personen</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.510579" elapsed="0.008830"/>
+</test>
+<test id="s1-t6" name="GET PERSONEN - De lijst bevat minimaal 50 records" line="53">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.520883" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.520780" elapsed="0.000212"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.520568" elapsed="0.000466"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.524296" level="INFO">GET Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.524348" level="INFO">GET Response : url=http://127.0.0.1:8000/personen 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '6029', 'content-type': 'application/json'} 
+ body=[{"id":1,"naam":"Mohammed Al-Rashid","adres":"Keizersgracht 12","woonplaats":"Amsterdam","emailadres":"m.alrashid@gmail.com"},{"id":2,"naam":"Sophie de Vries","adres":"Lange Voorhout 5","woonplaats":"Den Haag","emailadres":"sophie.devries@hotmail.com"},{"id":3,"naam":"Lars Janssen","adres":"Marktstraat 8","woonplaats":"Utrecht","emailadres":"lars.janssen@outlook.com"},{"id":4,"naam":"Fatima El Ouali","adres":"Bergweg 33","woonplaats":"Rotterdam","emailadres":"f.elouali@gmail.com"},{"id":5,"naam":"Tim van den Berg","adres":"Dorpsstraat 17","woonplaats":"Eindhoven","emailadres":"tim.vandenberg@live.nl"},{"id":6,"naam":"Emma Bakker","adres":"Hoofdstraat 45","woonplaats":"Groningen","emailadres":"emma.bakker@gmail.com"},{"id":7,"naam":"Yusuf Özdemir","adres":"Stationsplein 2","woonplaats":"Tilburg","emailadres":"y.ozdemir@yahoo.com"},{"id":8,"naam":"Nora Visser","adres":"Parkweg 19","woonplaats":"Almere","emailadres":"nora.visser@hotmail.com"},{"id":9,"naam":"Daan Smit","adres":"Kerkstraat 7","woonplaats":"Breda","emailadres":"daan.smit@gmail.com"},{"id":10,"naam":"Lena Mulder","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"},{"id":11,"naam":"Ahmed Benali","adres":"Tulpstraat 3","woonplaats":"Haarlem","emailadres":"ahmed.benali@gmail.com"},{"id":12,"naam":"Julia Meijer","adres":"Rozenlaan 14","woonplaats":"Arnhem","emailadres":"julia.meijer@live.nl"},{"id":13,"naam":"Sander Boer","adres":"Industrieweg 55","woonplaats":"Enschede","emailadres":"sander.boer@hotmail.com"},{"id":14,"naam":"Yasmine Khalil","adres":"Vondelstraat 9","woonplaats":"Zwolle","emailadres":"y.khalil@gmail.com"},{"id":15,"naam":"Pieter de Jong","adres":"Nieuwstraat 22","woonplaats":"Apeldoorn","emailadres":"pieter.dejong@outlook.com"},{"id":16,"naam":"Sara Linders","adres":"Julianaweg 37","woonplaats":"Maastricht","emailadres":"sara.linders@gmail.com"},{"id":17,"naam":"Kevin Willems","adres":"Beatrixlaan 6","woonplaats":"Leiden","emailadres":"kevin.willems@yahoo.com"},{"id":18,"naam":"Amira Tahir","adres":"Koningstraat 50","woonplaats":"Dordrecht","emailadres":"amira.tahir@hotmail.com"},{"id":19,"naam":"Roos van Dijk","adres":"Willemstraat 11","woonplaats":"Zoetermeer","emailadres":"roos.vandijk@gmail.com"},{"id":20,"naam":"Niels Hermans","adres":"Prins Hendrikstraat 4","woonplaats":"Deventer","emailadres":"niels.hermans@live.nl"},{"id":21,"naam":"Bilal Chaoui","adres":"Vossenlaan 16","woonplaats":"Delft","emailadres":"bilal.chaoui@gmail.com"},{"id":22,"naam":"Merel Kok","adres":"Zonnebloemstraat 25","woonplaats":"Alkmaar","emailadres":"merel.kok@outlook.com"},{"id":23,"naam":"Joost Hendriks","adres":"Havenstraat 38","woonplaats":"Amersfoort","emailadres":"joost.hendriks@hotmail.com"},{"id":24,"naam":"Leila Nasser","adres":"Boslaan 21","woonplaats":"Venlo","emailadres":"leila.nasser@gmail.com"},{"id":25,"naam":"Bram Peters","adres":"Rembrandtstraat 44","woonplaats":"Helmond","emailadres":"bram.peters@yahoo.com"},{"id":26,"naam":"Iris Vermeer","adres":"Mozartlaan 10","woonplaats":"Leeuwarden","emailadres":"iris.vermeer@gmail.com"},{"id":27,"naam":"Omar Idrissi","adres":"Spinozaweg 29","woonplaats":"Zaandam","emailadres":"omar.idrissi@hotmail.com"},{"id":28,"naam":"Fleur Timmermans","adres":"Wilhelminalaan 3","woonplaats":"Ede","emailadres":"fleur.timmermans@outlook.com"},{"id":29,"naam":"Tom van Leeuwen","adres":"Erasmusstraat 18","woonplaats":"Hilversum","emailadres":"tom.vanleeuwen@live.nl"},{"id":30,"naam":"Nadia Hamid","adres":"Sophiastraat 41","woonplaats":"Roosendaal","emailadres":"nadia.hamid@gmail.com"},{"id":31,"naam":"Rick Kuijpers","adres":"Tramweg 13","woonplaats":"Spijkenisse","emailadres":"rick.kuijpers@hotmail.com"},{"id":32,"naam":"Mila Schouten","adres":"Chopinplein 7","woonplaats":"Emmen","emailadres":"mila.schouten@gmail.com"},{"id":33,"naam":"Karim Aouad","adres":"Lindelaan 30","woonplaats":"Capelle a/d IJssel","emailadres":"karim.aouad@yahoo.com"},{"id":34,"naam":"Denise van Rooij","adres":"Kastanjelaan 53","woonplaats":"Heerlen","emailadres":"denise.vanrooij@outlook.com"},{"id":35,"naam":"Mark Peeters","adres":"Schipholweg 26","woonplaats":"Sittard","emailadres":"mark.peeters@gmail.com"},{"id":36,"naam":"Hana Berrada","adres":"Populierenlaan 15","woonplaats":"Gouda","emailadres":"hana.berrada@hotmail.com"},{"id":37,"naam":"Stefan Dekker","adres":"Iepenlaan 48","woonplaats":"Purmerend","emailadres":"stefan.dekker@live.nl"},{"id":38,"naam":"Lotte Huisman","adres":"Beukenweg 36","woonplaats":"Hoorn","emailadres":"lotte.huisman@gmail.com"},{"id":39,"naam":"Anouar El Habti","adres":"Dennenlaan 9","woonplaats":"Alphen a/d Rijn","emailadres":"anouar.elhabti@outlook.com"},{"id":40,"naam":"Charlotte Engel","adres":"Magnoliapad 20","woonplaats":"Lelystad","emailadres":"charlotte.engel@hotmail.com"},{"id":41,"naam":"Jesse van Beek","adres":"Veluwelaan 34","woonplaats":"Harderwijk","emailadres":"jesse.vanbeek@gmail.com"},{"id":42,"naam":"Samira Ouali","adres":"Hertogstraat 5","woonplaats":"Bergen op Zoom","emailadres":"samira.ouali@yahoo.com"},{"id":43,"naam":"Wouter Groot","adres":"Lübeckstraat 27","woonplaats":"Nieuwegein","emailadres":"wouter.groot@outlook.com"},{"id":44,"naam":"Eva Brouwer","adres":"Azalealaan 43","woonplaats":"Weert","emailadres":"eva.brouwer@gmail.com"},{"id":45,"naam":"Tariq Mansouri","adres":"Dahliastraat 61","woonplaats":"Oss","emailadres":"tariq.mansouri@hotmail.com"},{"id":46,"naam":"Anna de Wit","adres":"Klimopweg 8","woonplaats":"Middelburg","emailadres":"anna.dewit@live.nl"},{"id":47,"naam":"Bas Vrijhoeven","adres":"Goudenregenstraat 32","woonplaats":"Drachten","emailadres":"bas.vrijhoeven@gmail.com"},{"id":48,"naam":"Layla Boukhari","adres":"Narcissusstraat 47","woonplaats":"Vlaardingen","emailadres":"layla.boukhari@outlook.com"},{"id":49,"naam":"Hugo van Ommen","adres":"Heideweg 6","woonplaats":"Veenendaal","emailadres":"hugo.vanommen@hotmail.com"},{"id":50,"naam":"Zara El Amrani","adres":"Seringenlaan 23","woonplaats":"Schiedam","emailadres":"zara.elamrani@gmail.com"}] 
+ </msg>
+<msg time="2026-03-29T17:10:54.524498" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.521699" elapsed="0.002816"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.524842" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.524630" elapsed="0.000238"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.521234" elapsed="0.003674"/>
+</kw>
+<kw name="Then De lijst minimaal 50 records bevat" owner="resources" source_name="De lijst minimaal ${aantal} records bevat">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.525727" level="INFO">${body} = [{'id': 1, 'naam': 'Mohammed Al-Rashid', 'adres': 'Keizersgracht 12', 'woonplaats': 'Amsterdam', 'emailadres': 'm.alrashid@gmail.com'}, {'id': 2, 'naam': 'Sophie de Vries', 'adres': 'Lange Voorhout 5'...</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.525269" elapsed="0.000475"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.526126" level="INFO">Length is 50.</msg>
+<msg time="2026-03-29T17:10:54.526182" level="INFO">${lengte} = 50</msg>
+<var>${lengte}</var>
+<arg>${body}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.525822" elapsed="0.000392"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${lengte} &gt;= ${aantal}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.526333" elapsed="0.000545"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.525097" elapsed="0.001837"/>
+</kw>
+<tag>get</tag>
+<tag>personen</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.520134" elapsed="0.006979"/>
+</test>
+<test id="s1-t7" name="GET PERSONEN - Elk record bevat alle verplichte velden" line="59">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.528656" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.528527" elapsed="0.000234"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.528243" elapsed="0.000577"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.532508" level="INFO">GET Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.532604" level="INFO">GET Response : url=http://127.0.0.1:8000/personen 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '6029', 'content-type': 'application/json'} 
+ body=[{"id":1,"naam":"Mohammed Al-Rashid","adres":"Keizersgracht 12","woonplaats":"Amsterdam","emailadres":"m.alrashid@gmail.com"},{"id":2,"naam":"Sophie de Vries","adres":"Lange Voorhout 5","woonplaats":"Den Haag","emailadres":"sophie.devries@hotmail.com"},{"id":3,"naam":"Lars Janssen","adres":"Marktstraat 8","woonplaats":"Utrecht","emailadres":"lars.janssen@outlook.com"},{"id":4,"naam":"Fatima El Ouali","adres":"Bergweg 33","woonplaats":"Rotterdam","emailadres":"f.elouali@gmail.com"},{"id":5,"naam":"Tim van den Berg","adres":"Dorpsstraat 17","woonplaats":"Eindhoven","emailadres":"tim.vandenberg@live.nl"},{"id":6,"naam":"Emma Bakker","adres":"Hoofdstraat 45","woonplaats":"Groningen","emailadres":"emma.bakker@gmail.com"},{"id":7,"naam":"Yusuf Özdemir","adres":"Stationsplein 2","woonplaats":"Tilburg","emailadres":"y.ozdemir@yahoo.com"},{"id":8,"naam":"Nora Visser","adres":"Parkweg 19","woonplaats":"Almere","emailadres":"nora.visser@hotmail.com"},{"id":9,"naam":"Daan Smit","adres":"Kerkstraat 7","woonplaats":"Breda","emailadres":"daan.smit@gmail.com"},{"id":10,"naam":"Lena Mulder","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"},{"id":11,"naam":"Ahmed Benali","adres":"Tulpstraat 3","woonplaats":"Haarlem","emailadres":"ahmed.benali@gmail.com"},{"id":12,"naam":"Julia Meijer","adres":"Rozenlaan 14","woonplaats":"Arnhem","emailadres":"julia.meijer@live.nl"},{"id":13,"naam":"Sander Boer","adres":"Industrieweg 55","woonplaats":"Enschede","emailadres":"sander.boer@hotmail.com"},{"id":14,"naam":"Yasmine Khalil","adres":"Vondelstraat 9","woonplaats":"Zwolle","emailadres":"y.khalil@gmail.com"},{"id":15,"naam":"Pieter de Jong","adres":"Nieuwstraat 22","woonplaats":"Apeldoorn","emailadres":"pieter.dejong@outlook.com"},{"id":16,"naam":"Sara Linders","adres":"Julianaweg 37","woonplaats":"Maastricht","emailadres":"sara.linders@gmail.com"},{"id":17,"naam":"Kevin Willems","adres":"Beatrixlaan 6","woonplaats":"Leiden","emailadres":"kevin.willems@yahoo.com"},{"id":18,"naam":"Amira Tahir","adres":"Koningstraat 50","woonplaats":"Dordrecht","emailadres":"amira.tahir@hotmail.com"},{"id":19,"naam":"Roos van Dijk","adres":"Willemstraat 11","woonplaats":"Zoetermeer","emailadres":"roos.vandijk@gmail.com"},{"id":20,"naam":"Niels Hermans","adres":"Prins Hendrikstraat 4","woonplaats":"Deventer","emailadres":"niels.hermans@live.nl"},{"id":21,"naam":"Bilal Chaoui","adres":"Vossenlaan 16","woonplaats":"Delft","emailadres":"bilal.chaoui@gmail.com"},{"id":22,"naam":"Merel Kok","adres":"Zonnebloemstraat 25","woonplaats":"Alkmaar","emailadres":"merel.kok@outlook.com"},{"id":23,"naam":"Joost Hendriks","adres":"Havenstraat 38","woonplaats":"Amersfoort","emailadres":"joost.hendriks@hotmail.com"},{"id":24,"naam":"Leila Nasser","adres":"Boslaan 21","woonplaats":"Venlo","emailadres":"leila.nasser@gmail.com"},{"id":25,"naam":"Bram Peters","adres":"Rembrandtstraat 44","woonplaats":"Helmond","emailadres":"bram.peters@yahoo.com"},{"id":26,"naam":"Iris Vermeer","adres":"Mozartlaan 10","woonplaats":"Leeuwarden","emailadres":"iris.vermeer@gmail.com"},{"id":27,"naam":"Omar Idrissi","adres":"Spinozaweg 29","woonplaats":"Zaandam","emailadres":"omar.idrissi@hotmail.com"},{"id":28,"naam":"Fleur Timmermans","adres":"Wilhelminalaan 3","woonplaats":"Ede","emailadres":"fleur.timmermans@outlook.com"},{"id":29,"naam":"Tom van Leeuwen","adres":"Erasmusstraat 18","woonplaats":"Hilversum","emailadres":"tom.vanleeuwen@live.nl"},{"id":30,"naam":"Nadia Hamid","adres":"Sophiastraat 41","woonplaats":"Roosendaal","emailadres":"nadia.hamid@gmail.com"},{"id":31,"naam":"Rick Kuijpers","adres":"Tramweg 13","woonplaats":"Spijkenisse","emailadres":"rick.kuijpers@hotmail.com"},{"id":32,"naam":"Mila Schouten","adres":"Chopinplein 7","woonplaats":"Emmen","emailadres":"mila.schouten@gmail.com"},{"id":33,"naam":"Karim Aouad","adres":"Lindelaan 30","woonplaats":"Capelle a/d IJssel","emailadres":"karim.aouad@yahoo.com"},{"id":34,"naam":"Denise van Rooij","adres":"Kastanjelaan 53","woonplaats":"Heerlen","emailadres":"denise.vanrooij@outlook.com"},{"id":35,"naam":"Mark Peeters","adres":"Schipholweg 26","woonplaats":"Sittard","emailadres":"mark.peeters@gmail.com"},{"id":36,"naam":"Hana Berrada","adres":"Populierenlaan 15","woonplaats":"Gouda","emailadres":"hana.berrada@hotmail.com"},{"id":37,"naam":"Stefan Dekker","adres":"Iepenlaan 48","woonplaats":"Purmerend","emailadres":"stefan.dekker@live.nl"},{"id":38,"naam":"Lotte Huisman","adres":"Beukenweg 36","woonplaats":"Hoorn","emailadres":"lotte.huisman@gmail.com"},{"id":39,"naam":"Anouar El Habti","adres":"Dennenlaan 9","woonplaats":"Alphen a/d Rijn","emailadres":"anouar.elhabti@outlook.com"},{"id":40,"naam":"Charlotte Engel","adres":"Magnoliapad 20","woonplaats":"Lelystad","emailadres":"charlotte.engel@hotmail.com"},{"id":41,"naam":"Jesse van Beek","adres":"Veluwelaan 34","woonplaats":"Harderwijk","emailadres":"jesse.vanbeek@gmail.com"},{"id":42,"naam":"Samira Ouali","adres":"Hertogstraat 5","woonplaats":"Bergen op Zoom","emailadres":"samira.ouali@yahoo.com"},{"id":43,"naam":"Wouter Groot","adres":"Lübeckstraat 27","woonplaats":"Nieuwegein","emailadres":"wouter.groot@outlook.com"},{"id":44,"naam":"Eva Brouwer","adres":"Azalealaan 43","woonplaats":"Weert","emailadres":"eva.brouwer@gmail.com"},{"id":45,"naam":"Tariq Mansouri","adres":"Dahliastraat 61","woonplaats":"Oss","emailadres":"tariq.mansouri@hotmail.com"},{"id":46,"naam":"Anna de Wit","adres":"Klimopweg 8","woonplaats":"Middelburg","emailadres":"anna.dewit@live.nl"},{"id":47,"naam":"Bas Vrijhoeven","adres":"Goudenregenstraat 32","woonplaats":"Drachten","emailadres":"bas.vrijhoeven@gmail.com"},{"id":48,"naam":"Layla Boukhari","adres":"Narcissusstraat 47","woonplaats":"Vlaardingen","emailadres":"layla.boukhari@outlook.com"},{"id":49,"naam":"Hugo van Ommen","adres":"Heideweg 6","woonplaats":"Veenendaal","emailadres":"hugo.vanommen@hotmail.com"},{"id":50,"naam":"Zara El Amrani","adres":"Seringenlaan 23","woonplaats":"Schiedam","emailadres":"zara.elamrani@gmail.com"}] 
+ </msg>
+<msg time="2026-03-29T17:10:54.532847" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.529203" elapsed="0.003676"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.533452" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.533089" elapsed="0.000409"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.529033" elapsed="0.004617"/>
+</kw>
+<kw name="Then Het eerste record de velden id, naam, adres, woonplaats en emailadres bevat" owner="resources">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.534786" level="INFO">${eerste} = {'id': 1, 'naam': 'Mohammed Al-Rashid', 'adres': 'Keizersgracht 12', 'woonplaats': 'Amsterdam', 'emailadres': 'm.alrashid@gmail.com'}</msg>
+<var>${eerste}</var>
+<arg>${RESPONSE.json()}[0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.534267" elapsed="0.000544"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${eerste}</arg>
+<arg>id</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.534901" elapsed="0.000164"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${eerste}</arg>
+<arg>naam</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.535179" elapsed="0.000111"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${eerste}</arg>
+<arg>adres</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.535364" elapsed="0.000078"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${eerste}</arg>
+<arg>woonplaats</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.535511" elapsed="0.000092"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${eerste}</arg>
+<arg>emailadres</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.535676" elapsed="0.000079"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.533991" elapsed="0.001799"/>
+</kw>
+<tag>get</tag>
+<tag>personen</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.527875" elapsed="0.008108"/>
+</test>
+<test id="s1-t8" name="GET PERSONEN - De eerste persoon is Mohammed Al-Rashid uit Amsterdam" line="65">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.537255" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.537165" elapsed="0.000178"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.536997" elapsed="0.000384"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.540372" level="INFO">GET Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.540422" level="INFO">GET Response : url=http://127.0.0.1:8000/personen 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '6029', 'content-type': 'application/json'} 
+ body=[{"id":1,"naam":"Mohammed Al-Rashid","adres":"Keizersgracht 12","woonplaats":"Amsterdam","emailadres":"m.alrashid@gmail.com"},{"id":2,"naam":"Sophie de Vries","adres":"Lange Voorhout 5","woonplaats":"Den Haag","emailadres":"sophie.devries@hotmail.com"},{"id":3,"naam":"Lars Janssen","adres":"Marktstraat 8","woonplaats":"Utrecht","emailadres":"lars.janssen@outlook.com"},{"id":4,"naam":"Fatima El Ouali","adres":"Bergweg 33","woonplaats":"Rotterdam","emailadres":"f.elouali@gmail.com"},{"id":5,"naam":"Tim van den Berg","adres":"Dorpsstraat 17","woonplaats":"Eindhoven","emailadres":"tim.vandenberg@live.nl"},{"id":6,"naam":"Emma Bakker","adres":"Hoofdstraat 45","woonplaats":"Groningen","emailadres":"emma.bakker@gmail.com"},{"id":7,"naam":"Yusuf Özdemir","adres":"Stationsplein 2","woonplaats":"Tilburg","emailadres":"y.ozdemir@yahoo.com"},{"id":8,"naam":"Nora Visser","adres":"Parkweg 19","woonplaats":"Almere","emailadres":"nora.visser@hotmail.com"},{"id":9,"naam":"Daan Smit","adres":"Kerkstraat 7","woonplaats":"Breda","emailadres":"daan.smit@gmail.com"},{"id":10,"naam":"Lena Mulder","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"},{"id":11,"naam":"Ahmed Benali","adres":"Tulpstraat 3","woonplaats":"Haarlem","emailadres":"ahmed.benali@gmail.com"},{"id":12,"naam":"Julia Meijer","adres":"Rozenlaan 14","woonplaats":"Arnhem","emailadres":"julia.meijer@live.nl"},{"id":13,"naam":"Sander Boer","adres":"Industrieweg 55","woonplaats":"Enschede","emailadres":"sander.boer@hotmail.com"},{"id":14,"naam":"Yasmine Khalil","adres":"Vondelstraat 9","woonplaats":"Zwolle","emailadres":"y.khalil@gmail.com"},{"id":15,"naam":"Pieter de Jong","adres":"Nieuwstraat 22","woonplaats":"Apeldoorn","emailadres":"pieter.dejong@outlook.com"},{"id":16,"naam":"Sara Linders","adres":"Julianaweg 37","woonplaats":"Maastricht","emailadres":"sara.linders@gmail.com"},{"id":17,"naam":"Kevin Willems","adres":"Beatrixlaan 6","woonplaats":"Leiden","emailadres":"kevin.willems@yahoo.com"},{"id":18,"naam":"Amira Tahir","adres":"Koningstraat 50","woonplaats":"Dordrecht","emailadres":"amira.tahir@hotmail.com"},{"id":19,"naam":"Roos van Dijk","adres":"Willemstraat 11","woonplaats":"Zoetermeer","emailadres":"roos.vandijk@gmail.com"},{"id":20,"naam":"Niels Hermans","adres":"Prins Hendrikstraat 4","woonplaats":"Deventer","emailadres":"niels.hermans@live.nl"},{"id":21,"naam":"Bilal Chaoui","adres":"Vossenlaan 16","woonplaats":"Delft","emailadres":"bilal.chaoui@gmail.com"},{"id":22,"naam":"Merel Kok","adres":"Zonnebloemstraat 25","woonplaats":"Alkmaar","emailadres":"merel.kok@outlook.com"},{"id":23,"naam":"Joost Hendriks","adres":"Havenstraat 38","woonplaats":"Amersfoort","emailadres":"joost.hendriks@hotmail.com"},{"id":24,"naam":"Leila Nasser","adres":"Boslaan 21","woonplaats":"Venlo","emailadres":"leila.nasser@gmail.com"},{"id":25,"naam":"Bram Peters","adres":"Rembrandtstraat 44","woonplaats":"Helmond","emailadres":"bram.peters@yahoo.com"},{"id":26,"naam":"Iris Vermeer","adres":"Mozartlaan 10","woonplaats":"Leeuwarden","emailadres":"iris.vermeer@gmail.com"},{"id":27,"naam":"Omar Idrissi","adres":"Spinozaweg 29","woonplaats":"Zaandam","emailadres":"omar.idrissi@hotmail.com"},{"id":28,"naam":"Fleur Timmermans","adres":"Wilhelminalaan 3","woonplaats":"Ede","emailadres":"fleur.timmermans@outlook.com"},{"id":29,"naam":"Tom van Leeuwen","adres":"Erasmusstraat 18","woonplaats":"Hilversum","emailadres":"tom.vanleeuwen@live.nl"},{"id":30,"naam":"Nadia Hamid","adres":"Sophiastraat 41","woonplaats":"Roosendaal","emailadres":"nadia.hamid@gmail.com"},{"id":31,"naam":"Rick Kuijpers","adres":"Tramweg 13","woonplaats":"Spijkenisse","emailadres":"rick.kuijpers@hotmail.com"},{"id":32,"naam":"Mila Schouten","adres":"Chopinplein 7","woonplaats":"Emmen","emailadres":"mila.schouten@gmail.com"},{"id":33,"naam":"Karim Aouad","adres":"Lindelaan 30","woonplaats":"Capelle a/d IJssel","emailadres":"karim.aouad@yahoo.com"},{"id":34,"naam":"Denise van Rooij","adres":"Kastanjelaan 53","woonplaats":"Heerlen","emailadres":"denise.vanrooij@outlook.com"},{"id":35,"naam":"Mark Peeters","adres":"Schipholweg 26","woonplaats":"Sittard","emailadres":"mark.peeters@gmail.com"},{"id":36,"naam":"Hana Berrada","adres":"Populierenlaan 15","woonplaats":"Gouda","emailadres":"hana.berrada@hotmail.com"},{"id":37,"naam":"Stefan Dekker","adres":"Iepenlaan 48","woonplaats":"Purmerend","emailadres":"stefan.dekker@live.nl"},{"id":38,"naam":"Lotte Huisman","adres":"Beukenweg 36","woonplaats":"Hoorn","emailadres":"lotte.huisman@gmail.com"},{"id":39,"naam":"Anouar El Habti","adres":"Dennenlaan 9","woonplaats":"Alphen a/d Rijn","emailadres":"anouar.elhabti@outlook.com"},{"id":40,"naam":"Charlotte Engel","adres":"Magnoliapad 20","woonplaats":"Lelystad","emailadres":"charlotte.engel@hotmail.com"},{"id":41,"naam":"Jesse van Beek","adres":"Veluwelaan 34","woonplaats":"Harderwijk","emailadres":"jesse.vanbeek@gmail.com"},{"id":42,"naam":"Samira Ouali","adres":"Hertogstraat 5","woonplaats":"Bergen op Zoom","emailadres":"samira.ouali@yahoo.com"},{"id":43,"naam":"Wouter Groot","adres":"Lübeckstraat 27","woonplaats":"Nieuwegein","emailadres":"wouter.groot@outlook.com"},{"id":44,"naam":"Eva Brouwer","adres":"Azalealaan 43","woonplaats":"Weert","emailadres":"eva.brouwer@gmail.com"},{"id":45,"naam":"Tariq Mansouri","adres":"Dahliastraat 61","woonplaats":"Oss","emailadres":"tariq.mansouri@hotmail.com"},{"id":46,"naam":"Anna de Wit","adres":"Klimopweg 8","woonplaats":"Middelburg","emailadres":"anna.dewit@live.nl"},{"id":47,"naam":"Bas Vrijhoeven","adres":"Goudenregenstraat 32","woonplaats":"Drachten","emailadres":"bas.vrijhoeven@gmail.com"},{"id":48,"naam":"Layla Boukhari","adres":"Narcissusstraat 47","woonplaats":"Vlaardingen","emailadres":"layla.boukhari@outlook.com"},{"id":49,"naam":"Hugo van Ommen","adres":"Heideweg 6","woonplaats":"Veenendaal","emailadres":"hugo.vanommen@hotmail.com"},{"id":50,"naam":"Zara El Amrani","adres":"Seringenlaan 23","woonplaats":"Schiedam","emailadres":"zara.elamrani@gmail.com"}] 
+ </msg>
+<msg time="2026-03-29T17:10:54.540854" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.537790" elapsed="0.003085"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.541180" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.540983" elapsed="0.000222"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.537629" elapsed="0.003611"/>
+</kw>
+<kw name="Then Het eerste item veld &quot;naam&quot; heeft waarde &quot;Mohammed Al-Rashid&quot;" owner="resources" source_name="Het eerste item veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.542147" level="INFO">${eerste} = {'id': 1, 'naam': 'Mohammed Al-Rashid', 'adres': 'Keizersgracht 12', 'woonplaats': 'Amsterdam', 'emailadres': 'm.alrashid@gmail.com'}</msg>
+<var>${eerste}</var>
+<arg>${RESPONSE.json()}[0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.541694" elapsed="0.000475"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${eerste}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.542273" elapsed="0.000210"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.541509" elapsed="0.001017"/>
+</kw>
+<kw name="And Het eerste item veld &quot;woonplaats&quot; heeft waarde &quot;Amsterdam&quot;" owner="resources" source_name="Het eerste item veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.543594" level="INFO">${eerste} = {'id': 1, 'naam': 'Mohammed Al-Rashid', 'adres': 'Keizersgracht 12', 'woonplaats': 'Amsterdam', 'emailadres': 'm.alrashid@gmail.com'}</msg>
+<var>${eerste}</var>
+<arg>${RESPONSE.json()}[0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.543111" elapsed="0.000503"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${eerste}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.543703" elapsed="0.000196"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.542836" elapsed="0.001103"/>
+</kw>
+<tag>get</tag>
+<tag>personen</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.536544" elapsed="0.007601"/>
+</test>
+<test id="s1-t9" name="GET PERSOON - Een bestaande persoon is opvraagbaar op ID" line="76">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.545442" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.545350" elapsed="0.000188"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.545183" elapsed="0.000397"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen/1&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.548563" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/1 
+ path_url=/personen/1 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.548621" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/1 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '124', 'content-type': 'application/json'} 
+ body={"id":1,"naam":"Mohammed Al-Rashid","adres":"Keizersgracht 12","woonplaats":"Amsterdam","emailadres":"m.alrashid@gmail.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.548694" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.546047" elapsed="0.002665"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.549129" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.548873" elapsed="0.000287"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.545873" elapsed="0.003331"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.550676" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.549934" elapsed="0.000794"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.549500" elapsed="0.001305"/>
+</kw>
+<tag>get</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.544791" elapsed="0.006216"/>
+</test>
+<test id="s1-t10" name="GET PERSOON - De juiste data wordt teruggegeven bij ID 1" line="82">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.552413" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.552262" elapsed="0.000269"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.552056" elapsed="0.000520"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen/1&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.555405" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/1 
+ path_url=/personen/1 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.555468" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/1 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '124', 'content-type': 'application/json'} 
+ body={"id":1,"naam":"Mohammed Al-Rashid","adres":"Keizersgracht 12","woonplaats":"Amsterdam","emailadres":"m.alrashid@gmail.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.555547" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.552957" elapsed="0.002608"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.555920" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.555694" elapsed="0.000304"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.552779" elapsed="0.003263"/>
+</kw>
+<kw name="Then Het veld &quot;naam&quot; heeft waarde &quot;Mohammed Al-Rashid&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.556956" level="INFO">${body} = {'id': 1, 'naam': 'Mohammed Al-Rashid', 'adres': 'Keizersgracht 12', 'woonplaats': 'Amsterdam', 'emailadres': 'm.alrashid@gmail.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.556529" elapsed="0.000448"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.557070" elapsed="0.000204"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.556280" elapsed="0.001033"/>
+</kw>
+<kw name="And Het veld &quot;woonplaats&quot; heeft waarde &quot;Amsterdam&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.558030" level="INFO">${body} = {'id': 1, 'naam': 'Mohammed Al-Rashid', 'adres': 'Keizersgracht 12', 'woonplaats': 'Amsterdam', 'emailadres': 'm.alrashid@gmail.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.557669" elapsed="0.000381"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.558141" elapsed="0.000195"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.557493" elapsed="0.000887"/>
+</kw>
+<kw name="And Het veld &quot;emailadres&quot; heeft waarde &quot;m.alrashid@gmail.com&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.559298" level="INFO">${body} = {'id': 1, 'naam': 'Mohammed Al-Rashid', 'adres': 'Keizersgracht 12', 'woonplaats': 'Amsterdam', 'emailadres': 'm.alrashid@gmail.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.558876" elapsed="0.000459"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.559428" elapsed="0.000192"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.558632" elapsed="0.001026"/>
+</kw>
+<tag>get</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.551689" elapsed="0.008112"/>
+</test>
+<test id="s1-t11" name="GET PERSOON - De laatste persoon is opvraagbaar op ID 50" line="90">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.560664" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.560574" elapsed="0.000189"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.560417" elapsed="0.000385"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen/50&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.563761" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/50 
+ path_url=/personen/50 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.563807" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/50 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '122', 'content-type': 'application/json'} 
+ body={"id":50,"naam":"Zara El Amrani","adres":"Seringenlaan 23","woonplaats":"Schiedam","emailadres":"zara.elamrani@gmail.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.563883" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.561146" elapsed="0.002755"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.564221" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.564011" elapsed="0.000239"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.560974" elapsed="0.003315"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.564991" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.564642" elapsed="0.000386"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.564468" elapsed="0.000597"/>
+</kw>
+<kw name="And Het veld &quot;naam&quot; heeft waarde &quot;Zara El Amrani&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.565835" level="INFO">${body} = {'id': 50, 'naam': 'Zara El Amrani', 'adres': 'Seringenlaan 23', 'woonplaats': 'Schiedam', 'emailadres': 'zara.elamrani@gmail.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.565425" elapsed="0.000433"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.565959" elapsed="0.000215"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.565253" elapsed="0.000983"/>
+</kw>
+<kw name="And Het veld &quot;woonplaats&quot; heeft waarde &quot;Schiedam&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.567175" level="INFO">${body} = {'id': 50, 'naam': 'Zara El Amrani', 'adres': 'Seringenlaan 23', 'woonplaats': 'Schiedam', 'emailadres': 'zara.elamrani@gmail.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.566754" elapsed="0.000441"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.567286" elapsed="0.000193"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.566534" elapsed="0.000983"/>
+</kw>
+<tag>get</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.560107" elapsed="0.007661"/>
+</test>
+<test id="s1-t12" name="GET PERSOON - Een onbekend ID geeft HTTP 404 terug" line="98">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.568977" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.568884" elapsed="0.000190"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.568730" elapsed="0.000382"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen/9999&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.571863" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/9999 
+ path_url=/personen/9999 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.571906" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/9999 
+ status=404, reason=Not Found 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'} 
+ body={"detail":"Persoon niet gevonden"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.571969" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.569467" elapsed="0.002518"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.572272" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.572084" elapsed="0.000212"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.569306" elapsed="0.003024"/>
+</kw>
+<kw name="Then De statuscode is 404" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.573180" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.572813" elapsed="0.000402"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.572593" elapsed="0.000657"/>
+</kw>
+<tag>get</tag>
+<tag>negatief</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.568398" elapsed="0.005031"/>
+</test>
+<test id="s1-t13" name="GET PERSOON - De foutmelding is correct bij een onbekend ID" line="104">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.574889" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.574764" elapsed="0.000235"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.574532" elapsed="0.000524"/>
+</kw>
+<kw name="When Ik een GET verzoek stuur naar &quot;/personen/9999&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.577701" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/9999 
+ path_url=/personen/9999 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.577746" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/9999 
+ status=404, reason=Not Found 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'} 
+ body={"detail":"Persoon niet gevonden"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.577819" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.575456" elapsed="0.002381"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.578167" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.577950" elapsed="0.000245"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.575286" elapsed="0.002948"/>
+</kw>
+<kw name="Then De foutmelding exact &quot;Persoon niet gevonden&quot; is" owner="resources" source_name="De foutmelding exact &quot;${tekst}&quot; is">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.579043" level="INFO">${body} = {'detail': 'Persoon niet gevonden'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.578643" elapsed="0.000419"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[detail]</arg>
+<arg>${tekst}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.579152" elapsed="0.000185"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.578448" elapsed="0.000927"/>
+</kw>
+<tag>get</tag>
+<tag>negatief</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.574156" elapsed="0.005423"/>
+</test>
+<test id="s1-t14" name="POST PERSOON - Een nieuwe persoon toevoegen geeft HTTP 201 terug" line="114">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.580771" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.580674" elapsed="0.000196"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.580499" elapsed="0.000415"/>
+</kw>
+<kw name="When Ik een POST verzoek stuur naar &quot;/personen&quot; met body" owner="resources" source_name="Ik een POST verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.586282" level="INFO">POST Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '125', 'Content-Type': 'application/json'} 
+ body=b'{"id": 99, "naam": "Robot Test Persoon", "adres": "Robotstraat 1", "woonplaats": "Robotstad", "emailadres": "robot@test.com"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.586349" level="INFO">POST Response : url=http://127.0.0.1:8000/personen 
+ status=201, reason=Created 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '116', 'content-type': 'application/json'} 
+ body={"id":99,"naam":"Robot Test Persoon","adres":"Robotstraat 1","woonplaats":"Robotstad","emailadres":"robot@test.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.586511" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.581644" elapsed="0.004890"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.586968" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.586688" elapsed="0.000310"/>
+</kw>
+<arg>id=${99}</arg>
+<arg>naam=Robot Test Persoon</arg>
+<arg>adres=Robotstraat 1</arg>
+<arg>woonplaats=Robotstad</arg>
+<arg>emailadres=robot@test.com</arg>
+<status status="PASS" start="2026-03-29T17:10:54.581196" elapsed="0.005849"/>
+</kw>
+<kw name="Then De statuscode is 201" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.587956" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.587557" elapsed="0.000439"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.587354" elapsed="0.000680"/>
+</kw>
+<kw name="And Het veld &quot;naam&quot; heeft waarde &quot;Robot Test Persoon&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.588755" level="INFO">${body} = {'id': 99, 'naam': 'Robot Test Persoon', 'adres': 'Robotstraat 1', 'woonplaats': 'Robotstad', 'emailadres': 'robot@test.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.588393" elapsed="0.000381"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.588861" elapsed="0.000195"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.588215" elapsed="0.000886"/>
+</kw>
+<kw name="Ik een DELETE verzoek stuur naar &quot;/personen/99&quot;" owner="resources" type="TEARDOWN" source_name="Ik een DELETE verzoek stuur naar &quot;${pad}&quot;">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.591916" level="INFO">DELETE Request : url=http://127.0.0.1:8000/personen/99 
+ path_url=/personen/99 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.591973" level="INFO">DELETE Response : url=http://127.0.0.1:8000/personen/99 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '45', 'content-type': 'application/json'} 
+ body={"message":"Persoon met id 99 is verwijderd"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.592126" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.589469" elapsed="0.002693"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.592533" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.592296" elapsed="0.000268"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.589306" elapsed="0.003303"/>
+</kw>
+<tag>persoon</tag>
+<tag>post</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.580130" elapsed="0.012649"/>
+</test>
+<test id="s1-t15" name="POST PERSOON - De toegevoegde persoon is daarna opvraagbaar" line="127">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.594062" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.593958" elapsed="0.000226"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.593795" elapsed="0.000433"/>
+</kw>
+<kw name="When Ik een POST verzoek stuur naar &quot;/personen&quot; met body" owner="resources" source_name="Ik een POST verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.597963" level="INFO">POST Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '124', 'Content-Type': 'application/json'} 
+ body=b'{"id": 98, "naam": "Opvraagbare Persoon", "adres": "Testlaan 5", "woonplaats": "Teststad", "emailadres": "opvraag@test.com"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.598044" level="INFO">POST Response : url=http://127.0.0.1:8000/personen 
+ status=201, reason=Created 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '115', 'content-type': 'application/json'} 
+ body={"id":98,"naam":"Opvraagbare Persoon","adres":"Testlaan 5","woonplaats":"Teststad","emailadres":"opvraag@test.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.598141" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.594951" elapsed="0.003209"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.598561" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.598310" elapsed="0.000281"/>
+</kw>
+<arg>id=${98}</arg>
+<arg>naam=Opvraagbare Persoon</arg>
+<arg>adres=Testlaan 5</arg>
+<arg>woonplaats=Teststad</arg>
+<arg>emailadres=opvraag@test.com</arg>
+<status status="PASS" start="2026-03-29T17:10:54.594504" elapsed="0.004129"/>
+</kw>
+<kw name="And Ik een GET verzoek stuur naar &quot;/personen/98&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.601264" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/98 
+ path_url=/personen/98 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.601309" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/98 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '115', 'content-type': 'application/json'} 
+ body={"id":98,"naam":"Opvraagbare Persoon","adres":"Testlaan 5","woonplaats":"Teststad","emailadres":"opvraag@test.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.601395" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.599190" elapsed="0.002223"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.601790" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.601575" elapsed="0.000242"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.598979" elapsed="0.002878"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.602860" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.602408" elapsed="0.000508"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.602165" elapsed="0.000792"/>
+</kw>
+<kw name="And Het veld &quot;naam&quot; heeft waarde &quot;Opvraagbare Persoon&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.603888" level="INFO">${body} = {'id': 98, 'naam': 'Opvraagbare Persoon', 'adres': 'Testlaan 5', 'woonplaats': 'Teststad', 'emailadres': 'opvraag@test.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.603453" elapsed="0.000455"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.603999" elapsed="0.000200"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.603212" elapsed="0.001029"/>
+</kw>
+<kw name="Ik een DELETE verzoek stuur naar &quot;/personen/98&quot;" owner="resources" type="TEARDOWN" source_name="Ik een DELETE verzoek stuur naar &quot;${pad}&quot;">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.606597" level="INFO">DELETE Request : url=http://127.0.0.1:8000/personen/98 
+ path_url=/personen/98 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.606638" level="INFO">DELETE Response : url=http://127.0.0.1:8000/personen/98 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '45', 'content-type': 'application/json'} 
+ body={"message":"Persoon met id 98 is verwijderd"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.606704" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.604815" elapsed="0.001909"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.607027" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.606829" elapsed="0.000226"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.604588" elapsed="0.002504"/>
+</kw>
+<tag>persoon</tag>
+<tag>post</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.593427" elapsed="0.013817"/>
+</test>
+<test id="s1-t16" name="POST PERSOON - Een duplicate ID geeft HTTP 400 terug" line="141">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.608361" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.608265" elapsed="0.000526"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.608095" elapsed="0.000743"/>
+</kw>
+<kw name="When Ik een POST verzoek stuur naar &quot;/personen&quot; met body" owner="resources" source_name="Ik een POST verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.612041" level="INFO">POST Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '111', 'Content-Type': 'application/json'} 
+ body=b'{"id": 1, "naam": "Duplicate Persoon", "adres": "Straat 1", "woonplaats": "Stad", "emailadres": "dup@test.com"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.612084" level="INFO">POST Response : url=http://127.0.0.1:8000/personen 
+ status=400, reason=Bad Request 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '40', 'content-type': 'application/json'} 
+ body={"detail":"Persoon met id 1 bestaat al"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.612161" level="INFO">${RESPONSE} = &lt;Response [400]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.609481" elapsed="0.002695"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.612505" level="INFO">${RESPONSE} = &lt;Response [400]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.612288" elapsed="0.000245"/>
+</kw>
+<arg>id=${1}</arg>
+<arg>naam=Duplicate Persoon</arg>
+<arg>adres=Straat 1</arg>
+<arg>woonplaats=Stad</arg>
+<arg>emailadres=dup@test.com</arg>
+<status status="PASS" start="2026-03-29T17:10:54.609101" elapsed="0.003474"/>
+</kw>
+<kw name="Then De statuscode is 400" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.613494" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.613108" elapsed="0.000430"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.612906" elapsed="0.000675"/>
+</kw>
+<tag>negatief</tag>
+<tag>persoon</tag>
+<tag>post</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.607726" elapsed="0.006028"/>
+</test>
+<test id="s1-t17" name="POST PERSOON - De foutmelding is correct bij een duplicate ID" line="152">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.614604" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.614506" elapsed="0.000192"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.614338" elapsed="0.000400"/>
+</kw>
+<kw name="When Ik een POST verzoek stuur naar &quot;/personen&quot; met body" owner="resources" source_name="Ik een POST verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.618493" level="INFO">POST Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '111', 'Content-Type': 'application/json'} 
+ body=b'{"id": 1, "naam": "Duplicate Persoon", "adres": "Straat 1", "woonplaats": "Stad", "emailadres": "dup@test.com"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.618564" level="INFO">POST Response : url=http://127.0.0.1:8000/personen 
+ status=400, reason=Bad Request 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '40', 'content-type': 'application/json'} 
+ body={"detail":"Persoon met id 1 bestaat al"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.618709" level="INFO">${RESPONSE} = &lt;Response [400]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.615331" elapsed="0.003414"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.619179" level="INFO">${RESPONSE} = &lt;Response [400]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.618905" elapsed="0.000305"/>
+</kw>
+<arg>id=${1}</arg>
+<arg>naam=Duplicate Persoon</arg>
+<arg>adres=Straat 1</arg>
+<arg>woonplaats=Stad</arg>
+<arg>emailadres=dup@test.com</arg>
+<status status="PASS" start="2026-03-29T17:10:54.614902" elapsed="0.004356"/>
+</kw>
+<kw name="Then De statuscode is 400" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.620159" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.619726" elapsed="0.000476"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.619521" elapsed="0.000726"/>
+</kw>
+<kw name="And De foutmelding &quot;bestaat al&quot; bevat" owner="resources" source_name="De foutmelding &quot;${tekst}&quot; bevat">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.621084" level="INFO">${body} = {'detail': 'Persoon met id 1 bestaat al'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.620688" elapsed="0.000416"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${body}[detail]</arg>
+<arg>${tekst}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.621195" elapsed="0.000212"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.620488" elapsed="0.000961"/>
+</kw>
+<tag>negatief</tag>
+<tag>persoon</tag>
+<tag>post</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.614049" elapsed="0.007569"/>
+</test>
+<test id="s1-t18" name="PUT PERSOON - Een bestaande persoon bewerken geeft HTTP 200 terug" line="168">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.622605" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.622500" elapsed="0.000210"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.622276" elapsed="0.000477"/>
+</kw>
+<kw name="When Ik een PUT verzoek stuur naar &quot;/personen/10&quot; met body" owner="resources" source_name="Ik een PUT verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.625728" level="INFO">PUT Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '28', 'Content-Type': 'application/json'} 
+ body=b'{"naam": "Bijgewerkte Naam"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.625772" level="INFO">PUT Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '122', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Bijgewerkte Naam","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.625844" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.623167" elapsed="0.002694"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.626240" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.625973" elapsed="0.000296"/>
+</kw>
+<arg>naam=Bijgewerkte Naam</arg>
+<status status="PASS" start="2026-03-29T17:10:54.622971" elapsed="0.003342"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.627125" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.626737" elapsed="0.000431"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.626539" elapsed="0.000672"/>
+</kw>
+<kw name="Ik een PUT verzoek stuur naar &quot;/personen/10&quot; met body" owner="resources" type="TEARDOWN" source_name="Ik een PUT verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.629551" level="INFO">PUT Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '23', 'Content-Type': 'application/json'} 
+ body=b'{"naam": "Lena Mulder"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.629591" level="INFO">PUT Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '117', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Lena Mulder","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.629694" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.627753" elapsed="0.001961"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.630052" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.629836" elapsed="0.000243"/>
+</kw>
+<arg>naam=Lena Mulder</arg>
+<status status="PASS" start="2026-03-29T17:10:54.627491" elapsed="0.002735"/>
+</kw>
+<tag>persoon</tag>
+<tag>put</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.621916" elapsed="0.008425"/>
+</test>
+<test id="s1-t19" name="PUT PERSOON - De naam wordt correct bijgewerkt" line="176">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.631280" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.631185" elapsed="0.000195"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.631016" elapsed="0.000405"/>
+</kw>
+<kw name="When Ik een PUT verzoek stuur naar &quot;/personen/10&quot; met body" owner="resources" source_name="Ik een PUT verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.634519" level="INFO">PUT Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '33', 'Content-Type': 'application/json'} 
+ body=b'{"naam": "Gewijzigde Naam Robot"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.634588" level="INFO">PUT Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '127', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Gewijzigde Naam Robot","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.634686" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.631862" elapsed="0.002842"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.635193" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.634857" elapsed="0.000376"/>
+</kw>
+<arg>naam=Gewijzigde Naam Robot</arg>
+<status status="PASS" start="2026-03-29T17:10:54.631640" elapsed="0.003644"/>
+</kw>
+<kw name="And Ik een GET verzoek stuur naar &quot;/personen/10&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.637460" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.637519" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '127', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Gewijzigde Naam Robot","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.637611" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.635745" elapsed="0.001884"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.637963" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.637750" elapsed="0.000241"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.635544" elapsed="0.002487"/>
+</kw>
+<kw name="Then Het veld &quot;naam&quot; heeft waarde &quot;Gewijzigde Naam Robot&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.638877" level="INFO">${body} = {'id': 10, 'naam': 'Gewijzigde Naam Robot', 'adres': 'Schoollaan 28', 'woonplaats': 'Nijmegen', 'emailadres': 'lena.mulder@outlook.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.638461" elapsed="0.000438"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.638992" elapsed="0.000204"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.638263" elapsed="0.000973"/>
+</kw>
+<kw name="Ik een PUT verzoek stuur naar &quot;/personen/10&quot; met body" owner="resources" type="TEARDOWN" source_name="Ik een PUT verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.641383" level="INFO">PUT Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '23', 'Content-Type': 'application/json'} 
+ body=b'{"naam": "Lena Mulder"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.641423" level="INFO">PUT Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '117', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Lena Mulder","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.641486" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.639706" elapsed="0.001798"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.641798" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.641608" elapsed="0.000218"/>
+</kw>
+<arg>naam=Lena Mulder</arg>
+<status status="PASS" start="2026-03-29T17:10:54.639490" elapsed="0.002374"/>
+</kw>
+<tag>persoon</tag>
+<tag>put</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.630691" elapsed="0.011280"/>
+</test>
+<test id="s1-t20" name="PUT PERSOON - Niet meegestuurde velden blijven ongewijzigd" line="185">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.642912" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.642805" elapsed="0.000202"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.642636" elapsed="0.000463"/>
+</kw>
+<kw name="And Ik een GET verzoek stuur naar &quot;/personen/10&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.645598" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.645646" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '117', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Lena Mulder","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.645721" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.643450" elapsed="0.002289"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.646083" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.645860" elapsed="0.000251"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.643281" elapsed="0.002870"/>
+</kw>
+<kw name="And Het veld &quot;adres&quot; heeft waarde &quot;Schoollaan 28&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.647073" level="INFO">${body} = {'id': 10, 'naam': 'Lena Mulder', 'adres': 'Schoollaan 28', 'woonplaats': 'Nijmegen', 'emailadres': 'lena.mulder@outlook.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.646629" elapsed="0.000468"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.647190" elapsed="0.000202"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.646403" elapsed="0.001033"/>
+</kw>
+<kw name="When Ik een PUT verzoek stuur naar &quot;/personen/10&quot; met body" owner="resources" source_name="Ik een PUT verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.650059" level="INFO">PUT Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '32', 'Content-Type': 'application/json'} 
+ body=b'{"naam": "Alleen Naam Wijzigen"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.650230" level="INFO">PUT Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '126', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Alleen Naam Wijzigen","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.650489" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.647837" elapsed="0.002688"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.651214" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.650751" elapsed="0.000535"/>
+</kw>
+<arg>naam=Alleen Naam Wijzigen</arg>
+<status status="PASS" start="2026-03-29T17:10:54.647638" elapsed="0.003790"/>
+</kw>
+<kw name="And Ik een GET verzoek stuur naar &quot;/personen/10&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.654230" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.654286" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '126', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Alleen Naam Wijzigen","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.654395" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.651999" elapsed="0.002414"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.654865" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.654569" elapsed="0.000345"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.651780" elapsed="0.003195"/>
+</kw>
+<kw name="Then Het veld &quot;adres&quot; heeft waarde &quot;Schoollaan 28&quot;" owner="resources" source_name="Het veld &quot;${veld}&quot; heeft waarde &quot;${waarde}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.655910" level="INFO">${body} = {'id': 10, 'naam': 'Alleen Naam Wijzigen', 'adres': 'Schoollaan 28', 'woonplaats': 'Nijmegen', 'emailadres': 'lena.mulder@outlook.com'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.655462" elapsed="0.000470"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[${veld}]</arg>
+<arg>${waarde}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.656029" elapsed="0.000208"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.655230" elapsed="0.001048"/>
+</kw>
+<kw name="Ik een PUT verzoek stuur naar &quot;/personen/10&quot; met body" owner="resources" type="TEARDOWN" source_name="Ik een PUT verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.659183" level="INFO">PUT Request : url=http://127.0.0.1:8000/personen/10 
+ path_url=/personen/10 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '23', 'Content-Type': 'application/json'} 
+ body=b'{"naam": "Lena Mulder"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.659250" level="INFO">PUT Response : url=http://127.0.0.1:8000/personen/10 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '117', 'content-type': 'application/json'} 
+ body={"id":10,"naam":"Lena Mulder","adres":"Schoollaan 28","woonplaats":"Nijmegen","emailadres":"lena.mulder@outlook.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.659431" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.657150" elapsed="0.002306"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.659857" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.659605" elapsed="0.000282"/>
+</kw>
+<arg>naam=Lena Mulder</arg>
+<status status="PASS" start="2026-03-29T17:10:54.656539" elapsed="0.003390"/>
+</kw>
+<tag>persoon</tag>
+<tag>put</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.642306" elapsed="0.017812"/>
+</test>
+<test id="s1-t21" name="PUT PERSOON - Een onbekend ID geeft HTTP 404 terug" line="196">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.661291" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.661195" elapsed="0.000197"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.661017" elapsed="0.000419"/>
+</kw>
+<kw name="When Ik een PUT verzoek stuur naar &quot;/personen/9999&quot; met body" owner="resources" source_name="Ik een PUT verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.664422" level="INFO">PUT Request : url=http://127.0.0.1:8000/personen/9999 
+ path_url=/personen/9999 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '24', 'Content-Type': 'application/json'} 
+ body=b'{"naam": "Bestaat Niet"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.664468" level="INFO">PUT Response : url=http://127.0.0.1:8000/personen/9999 
+ status=404, reason=Not Found 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'} 
+ body={"detail":"Persoon niet gevonden"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.664543" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.661835" elapsed="0.002725"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.664898" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.664679" elapsed="0.000246"/>
+</kw>
+<arg>naam=Bestaat Niet</arg>
+<status status="PASS" start="2026-03-29T17:10:54.661640" elapsed="0.003325"/>
+</kw>
+<kw name="Then De statuscode is 404" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.665841" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.665334" elapsed="0.000568"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.665154" elapsed="0.000802"/>
+</kw>
+<kw name="And De foutmelding exact &quot;Persoon niet gevonden&quot; is" owner="resources" source_name="De foutmelding exact &quot;${tekst}&quot; is">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.666802" level="INFO">${body} = {'detail': 'Persoon niet gevonden'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.666401" elapsed="0.000420"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[detail]</arg>
+<arg>${tekst}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.666909" elapsed="0.000181"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.666184" elapsed="0.000943"/>
+</kw>
+<tag>negatief</tag>
+<tag>persoon</tag>
+<tag>put</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.660633" elapsed="0.006639"/>
+</test>
+<test id="s1-t22" name="DELETE PERSOON - Een bestaande persoon verwijderen geeft HTTP 200 terug" line="208">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.668094" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.668006" elapsed="0.000181"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.667855" elapsed="0.000371"/>
+</kw>
+<kw name="And Ik een POST verzoek stuur naar &quot;/personen&quot; met body" owner="resources" source_name="Ik een POST verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.671004" level="INFO">POST Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '109', 'Content-Type': 'application/json'} 
+ body=b'{"id": 96, "naam": "Te Verwijderen", "adres": "Weg 1", "woonplaats": "Nergens", "emailadres": "weg@test.com"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.671052" level="INFO">POST Response : url=http://127.0.0.1:8000/personen 
+ status=201, reason=Created 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '100', 'content-type': 'application/json'} 
+ body={"id":96,"naam":"Te Verwijderen","adres":"Weg 1","woonplaats":"Nergens","emailadres":"weg@test.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.671125" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.668760" elapsed="0.002383"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.671466" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.671255" elapsed="0.000252"/>
+</kw>
+<arg>id=${96}</arg>
+<arg>naam=Te Verwijderen</arg>
+<arg>adres=Weg 1</arg>
+<arg>woonplaats=Nergens</arg>
+<arg>emailadres=weg@test.com</arg>
+<status status="PASS" start="2026-03-29T17:10:54.668409" elapsed="0.003142"/>
+</kw>
+<kw name="When Ik een DELETE verzoek stuur naar &quot;/personen/96&quot;" owner="resources" source_name="Ik een DELETE verzoek stuur naar &quot;${pad}&quot;">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.673536" level="INFO">DELETE Request : url=http://127.0.0.1:8000/personen/96 
+ path_url=/personen/96 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.673647" level="INFO">DELETE Response : url=http://127.0.0.1:8000/personen/96 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '45', 'content-type': 'application/json'} 
+ body={"message":"Persoon met id 96 is verwijderd"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.673740" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.672039" elapsed="0.001724"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.674133" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.673914" elapsed="0.000248"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.671824" elapsed="0.002377"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.675021" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.674655" elapsed="0.000404"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.674468" elapsed="0.000632"/>
+</kw>
+<tag>delete</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.667565" elapsed="0.007739"/>
+</test>
+<test id="s1-t23" name="DELETE PERSOON - Het bevestigingsbericht is aanwezig na verwijderen" line="220">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.676518" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.676424" elapsed="0.000190"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.676252" elapsed="0.000404"/>
+</kw>
+<kw name="And Ik een POST verzoek stuur naar &quot;/personen&quot; met body" owner="resources" source_name="Ik een POST verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.679719" level="INFO">POST Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '112', 'Content-Type': 'application/json'} 
+ body=b'{"id": 95, "naam": "Te Verwijderen 2", "adres": "Weg 2", "woonplaats": "Nergens", "emailadres": "weg2@test.com"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.679766" level="INFO">POST Response : url=http://127.0.0.1:8000/personen 
+ status=201, reason=Created 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '103', 'content-type': 'application/json'} 
+ body={"id":95,"naam":"Te Verwijderen 2","adres":"Weg 2","woonplaats":"Nergens","emailadres":"weg2@test.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.679844" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.677228" elapsed="0.002633"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.680200" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.679983" elapsed="0.000252"/>
+</kw>
+<arg>id=${95}</arg>
+<arg>naam=Te Verwijderen 2</arg>
+<arg>adres=Weg 2</arg>
+<arg>woonplaats=Nergens</arg>
+<arg>emailadres=weg2@test.com</arg>
+<status status="PASS" start="2026-03-29T17:10:54.676858" elapsed="0.003423"/>
+</kw>
+<kw name="When Ik een DELETE verzoek stuur naar &quot;/personen/95&quot;" owner="resources" source_name="Ik een DELETE verzoek stuur naar &quot;${pad}&quot;">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.682384" level="INFO">DELETE Request : url=http://127.0.0.1:8000/personen/95 
+ path_url=/personen/95 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.682430" level="INFO">DELETE Response : url=http://127.0.0.1:8000/personen/95 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '45', 'content-type': 'application/json'} 
+ body={"message":"Persoon met id 95 is verwijderd"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.682502" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.680755" elapsed="0.001765"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.683009" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.682649" elapsed="0.000404"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.680547" elapsed="0.002590"/>
+</kw>
+<kw name="Then De statuscode is 200" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.684316" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.683792" elapsed="0.000598"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.683572" elapsed="0.000879"/>
+</kw>
+<kw name="And Het bevestigingsbericht &quot;verwijderd&quot; bevat" owner="resources" source_name="Het bevestigingsbericht &quot;${tekst}&quot; bevat">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.685311" level="INFO">${body} = {'message': 'Persoon met id 95 is verwijderd'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.684892" elapsed="0.000439"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${body}[message]</arg>
+<arg>${tekst}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.685432" elapsed="0.000208"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.684688" elapsed="0.000995"/>
+</kw>
+<tag>delete</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.675877" elapsed="0.009965"/>
+</test>
+<test id="s1-t24" name="DELETE PERSOON - Een verwijderd record is niet meer opvraagbaar" line="233">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.686752" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.686656" elapsed="0.000316"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.686499" elapsed="0.000519"/>
+</kw>
+<kw name="And Ik een POST verzoek stuur naar &quot;/personen&quot; met body" owner="resources" source_name="Ik een POST verzoek stuur naar &quot;${pad}&quot; met body">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.689996" level="INFO">POST Request : url=http://127.0.0.1:8000/personen 
+ path_url=/personen 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '112', 'Content-Type': 'application/json'} 
+ body=b'{"id": 94, "naam": "Te Verwijderen 3", "adres": "Weg 3", "woonplaats": "Nergens", "emailadres": "weg3@test.com"}' 
+ </msg>
+<msg time="2026-03-29T17:10:54.690081" level="INFO">POST Response : url=http://127.0.0.1:8000/personen 
+ status=201, reason=Created 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '103', 'content-type': 'application/json'} 
+ body={"id":94,"naam":"Te Verwijderen 3","adres":"Weg 3","woonplaats":"Nergens","emailadres":"weg3@test.com"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.690172" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.687573" elapsed="0.002616"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.690529" level="INFO">${RESPONSE} = &lt;Response [201]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.690309" elapsed="0.000248"/>
+</kw>
+<arg>id=${94}</arg>
+<arg>naam=Te Verwijderen 3</arg>
+<arg>adres=Weg 3</arg>
+<arg>woonplaats=Nergens</arg>
+<arg>emailadres=weg3@test.com</arg>
+<status status="PASS" start="2026-03-29T17:10:54.687201" elapsed="0.003397"/>
+</kw>
+<kw name="When Ik een DELETE verzoek stuur naar &quot;/personen/94&quot;" owner="resources" source_name="Ik een DELETE verzoek stuur naar &quot;${pad}&quot;">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.692554" level="INFO">DELETE Request : url=http://127.0.0.1:8000/personen/94 
+ path_url=/personen/94 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.692602" level="INFO">DELETE Response : url=http://127.0.0.1:8000/personen/94 
+ status=200, reason=OK 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '45', 'content-type': 'application/json'} 
+ body={"message":"Persoon met id 94 is verwijderd"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.692674" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.690992" elapsed="0.001699"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.693071" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.692803" elapsed="0.000305"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.690807" elapsed="0.002345"/>
+</kw>
+<kw name="And Ik een GET verzoek stuur naar &quot;/personen/94&quot;" owner="resources" source_name="Ik een GET verzoek stuur naar &quot;${pad}&quot;">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.694931" level="INFO">GET Request : url=http://127.0.0.1:8000/personen/94 
+ path_url=/personen/94 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.694967" level="INFO">GET Response : url=http://127.0.0.1:8000/personen/94 
+ status=404, reason=Not Found 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'} 
+ body={"detail":"Persoon niet gevonden"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.695030" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.693551" elapsed="0.001495"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.695346" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.695150" elapsed="0.000224"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.693366" elapsed="0.002049"/>
+</kw>
+<kw name="Then De statuscode is 404" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.696164" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.695805" elapsed="0.000398"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.695631" elapsed="0.000613"/>
+</kw>
+<tag>delete</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.686161" elapsed="0.010228"/>
+</test>
+<test id="s1-t25" name="DELETE PERSOON - Een onbekend ID geeft HTTP 404 terug" line="246">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.697191" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.697102" elapsed="0.000179"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.696951" elapsed="0.000370"/>
+</kw>
+<kw name="When Ik een DELETE verzoek stuur naar &quot;/personen/9999&quot;" owner="resources" source_name="Ik een DELETE verzoek stuur naar &quot;${pad}&quot;">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.699910" level="INFO">DELETE Request : url=http://127.0.0.1:8000/personen/9999 
+ path_url=/personen/9999 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.699982" level="INFO">DELETE Response : url=http://127.0.0.1:8000/personen/9999 
+ status=404, reason=Not Found 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'} 
+ body={"detail":"Persoon niet gevonden"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.700104" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.697659" elapsed="0.002463"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.700601" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.700347" elapsed="0.000288"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.697503" elapsed="0.003179"/>
+</kw>
+<kw name="Then De statuscode is 404" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.701636" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.701221" elapsed="0.000460"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.700984" elapsed="0.000740"/>
+</kw>
+<tag>delete</tag>
+<tag>negatief</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.696679" elapsed="0.005198"/>
+</test>
+<test id="s1-t26" name="DELETE PERSOON - De foutmelding is correct bij een onbekend ID" line="252">
+<kw name="Given De API server is beschikbaar" owner="resources">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.704646" level="INFO">Creating Session using : alias=fastapi_sessie, url=http://127.0.0.1:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSIE}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-29T17:10:54.702624" elapsed="0.002114"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.702458" elapsed="0.002326"/>
+</kw>
+<kw name="When Ik een DELETE verzoek stuur naar &quot;/personen/9999&quot;" owner="resources" source_name="Ik een DELETE verzoek stuur naar &quot;${pad}&quot;">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.707447" level="INFO">DELETE Request : url=http://127.0.0.1:8000/personen/9999 
+ path_url=/personen/9999 
+ headers={'User-Agent': 'python-requests/2.33.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-03-29T17:10:54.707490" level="INFO">DELETE Response : url=http://127.0.0.1:8000/personen/9999 
+ status=404, reason=Not Found 
+ headers={'date': 'Sun, 29 Mar 2026 15:10:54 GMT', 'server': 'uvicorn', 'content-length': '34', 'content-type': 'application/json'} 
+ body={"detail":"Persoon niet gevonden"} 
+ </msg>
+<msg time="2026-03-29T17:10:54.707590" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<var>${RESPONSE}</var>
+<arg>${SESSIE}</arg>
+<arg>${pad}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.705174" elapsed="0.002434"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.707995" level="INFO">${RESPONSE} = &lt;Response [404]&gt;</msg>
+<arg>${RESPONSE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.707751" elapsed="0.000273"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.705002" elapsed="0.003063"/>
+</kw>
+<kw name="Then De statuscode is 404" owner="resources" source_name="De statuscode is ${code}">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.708798" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${RESPONSE.status_code}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.708435" elapsed="0.000407"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.708256" elapsed="0.000624"/>
+</kw>
+<kw name="And De foutmelding exact &quot;Persoon niet gevonden&quot; is" owner="resources" source_name="De foutmelding exact &quot;${tekst}&quot; is">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-29T17:10:54.709592" level="INFO">${body} = {'detail': 'Persoon niet gevonden'}</msg>
+<var>${body}</var>
+<arg>${RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.709249" elapsed="0.000362"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[detail]</arg>
+<arg>${tekst}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T17:10:54.709700" elapsed="0.000172"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.709082" elapsed="0.000824"/>
+</kw>
+<tag>delete</tag>
+<tag>negatief</tag>
+<tag>persoon</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-03-29T17:10:54.702173" elapsed="0.007863"/>
+</test>
+<kw name="De sessie wordt gesloten" owner="resources" type="TEARDOWN">
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2026-03-29T17:10:54.710906" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2026-03-29T17:10:54.710866" elapsed="0.000981"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.710751" elapsed="0.001140"/>
+</kw>
+<status status="PASS" start="2026-03-29T17:10:54.317862" elapsed="0.394050"/>
+</suite>
+<statistics>
+<total>
+<stat pass="26" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="5" fail="0" skip="0">delete</stat>
+<stat pass="9" fail="0" skip="0">get</stat>
+<stat pass="2" fail="0" skip="0">health</stat>
+<stat pass="7" fail="0" skip="0">negatief</stat>
+<stat pass="4" fail="0" skip="0">personen</stat>
+<stat pass="18" fail="0" skip="0">persoon</stat>
+<stat pass="4" fail="0" skip="0">post</stat>
+<stat pass="4" fail="0" skip="0">put</stat>
+<stat pass="22" fail="0" skip="0">regression</stat>
+<stat pass="2" fail="0" skip="0">root</stat>
+<stat pass="4" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Regression Tests" id="s1" pass="26" fail="0" skip="0">Regression Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
