@@ -1,6 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 app = FastAPI(title="FastAPI Copilte", version="0.1.0")
 
@@ -11,6 +11,13 @@ class Persoon(BaseModel):
     adres: str
     woonplaats: str
     emailadres: str
+
+
+class PersoonUpdate(BaseModel):
+    naam: Optional[str] = None
+    adres: Optional[str] = None
+    woonplaats: Optional[str] = None
+    emailadres: Optional[str] = None
 
 
 PERSONEN: List[Persoon] = [
@@ -87,5 +94,32 @@ def get_persoon(persoon_id: int):
     for persoon in PERSONEN:
         if persoon.id == persoon_id:
             return persoon
-    from fastapi import HTTPException
+    raise HTTPException(status_code=404, detail="Persoon niet gevonden")
+
+
+@app.post("/personen", response_model=Persoon, status_code=201)
+def voeg_persoon_toe(persoon: Persoon):
+    for p in PERSONEN:
+        if p.id == persoon.id:
+            raise HTTPException(status_code=400, detail=f"Persoon met id {persoon.id} bestaat al")
+    PERSONEN.append(persoon)
+    return persoon
+
+
+@app.put("/personen/{persoon_id}", response_model=Persoon)
+def bewerk_persoon(persoon_id: int, update: PersoonUpdate):
+    for i, persoon in enumerate(PERSONEN):
+        if persoon.id == persoon_id:
+            bijgewerkt = persoon.model_copy(update=update.model_dump(exclude_none=True))
+            PERSONEN[i] = bijgewerkt
+            return bijgewerkt
+    raise HTTPException(status_code=404, detail="Persoon niet gevonden")
+
+
+@app.delete("/personen/{persoon_id}", status_code=200)
+def verwijder_persoon(persoon_id: int):
+    for i, persoon in enumerate(PERSONEN):
+        if persoon.id == persoon_id:
+            PERSONEN.pop(i)
+            return {"message": f"Persoon met id {persoon_id} is verwijderd"}
     raise HTTPException(status_code=404, detail="Persoon niet gevonden")
