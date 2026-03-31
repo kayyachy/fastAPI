@@ -47,7 +47,7 @@ flowchart TD
 
     ExecuteSQL --> GetResults[📊 Database retourneert<br/>resultset]
     GetResults --> StreamEntities[🌊 DAO retourneert<br/>Stream&lt;NOWAfwijsredenEntity&gt;]
-    StreamEntities --> MapToBean[🔄 Service mapped<br/>Entity naar Bean<br/>via CopyProperties]
+    StreamEntities --> MapToBean[🔄 Service mapt<br/>Entity naar Bean<br/>via CopyProperties]
     MapToBean --> CollectList[📦 Collect Stream<br/>naar List&lt;NOWAfwijsredenBean&gt;]
     CollectList --> LogResults[📝 Log: aantal resultaten]
     LogResults --> ReturnToGrid[⬆️ Return lijst naar Grid]
