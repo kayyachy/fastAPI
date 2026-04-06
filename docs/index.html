@@ -258,7 +258,28 @@
     .btn-checkout:active { transform: scale(.98); }
     .btn-checkout:disabled { opacity: .5; cursor: not-allowed; }
 
+    /* ── Customer form ── */
+    .customer-form { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 1rem; }
+
+    .form-field { display: flex; flex-direction: column; gap: .3rem; }
+
+    .form-field label { font-size: .8rem; font-weight: 600; color: #4a5568; }
+
+    .form-field input {
+      padding: .6rem .9rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-field input:focus { border-color: #6c63ff; }
+
+    .form-field input.error { border-color: #e53e3e; }
+
     /* toast */
+
     .toast {
       position: fixed;
       bottom: 2rem;
@@ -322,6 +343,20 @@
         <span>Totaal</span>
         <span class="total-amount" id="totalAmount">€ 0,00</span>
       </div>
+
+      <hr class="divider" />
+      <h2 style="margin-bottom:.8rem">👤 Jouw gegevens</h2>
+      <div class="customer-form">
+        <div class="form-field">
+          <label for="klantNaam">Naam</label>
+          <input type="text" id="klantNaam" placeholder="Jouw naam…" maxlength="60" />
+        </div>
+        <div class="form-field">
+          <label for="klantTel">Telefoonnummer</label>
+          <input type="tel" id="klantTel" placeholder="06-12345678" maxlength="20" />
+        </div>
+      </div>
+
       <button class="btn-checkout" id="checkoutBtn" disabled onclick="checkout()">
         Bestelling plaatsen
       </button>
@@ -421,11 +456,26 @@
   }
 
   function checkout() {
+    const naam = document.getElementById('klantNaam').value.trim();
+    const tel  = document.getElementById('klantTel').value.trim();
+
+    // Validate fields
+    let valid = true;
+    document.getElementById('klantNaam').classList.remove('error');
+    document.getElementById('klantTel').classList.remove('error');
+    if (!naam) { document.getElementById('klantNaam').classList.add('error'); valid = false; }
+    if (!tel)  { document.getElementById('klantTel').classList.add('error');  valid = false; }
+    if (!valid) { showToast('Vul je naam en telefoonnummer in.'); return; }
+
     const selected = products.filter(p => p.qty > 0);
     const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
-    const description = selected.map(p => `${p.name} x${p.qty}`).join(', ');
+    const productList = selected.map(p => `${p.name} x${p.qty}`).join(', ');
+    const description = `${naam} | ${tel} | ${productList}`;
     const bunqUrl = `https://bunq.me/KURBAN2026/${total}/${encodeURIComponent(description)}`;
+
     products.forEach(p => p.qty = 0);
+    document.getElementById('klantNaam').value = '';
+    document.getElementById('klantTel').value = '';
     renderGrid();
     renderCart();
     window.open(bunqUrl, '_blank');
