@@ -423,10 +423,12 @@
   function checkout() {
     const selected = products.filter(p => p.qty > 0);
     const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
-    showToast(`✅ Bestelling geplaatst voor € ${total.toLocaleString('nl-NL')},00!`);
+    const description = selected.map(p => `${p.name} x${p.qty}`).join(', ');
+    const bunqUrl = `https://bunq.me/KURBAN2026/${total}/${encodeURIComponent(description)}`;
     products.forEach(p => p.qty = 0);
     renderGrid();
     renderCart();
+    window.open(bunqUrl, '_blank');
   }
 
   function escHtml(str) {
