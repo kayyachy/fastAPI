@@ -368,7 +368,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  const PRICE = 100; // € per stuk
+  const PRICE = 0.01; // € per stuk
 
   // Seed a few example products
   const products = [
@@ -419,7 +419,7 @@
         <span class="checkmark">✅</span>
         <span class="product-icon">${p.icon}</span>
         <span class="product-name">${escHtml(p.name)}</span>
-        <span class="product-price">€ ${PRICE},- / stuk</span>
+        <span class="product-price">€ ${PRICE.toLocaleString('nl-NL', {minimumFractionDigits:2})},- / stuk</span>
         <div class="qty-controls" onclick="event.stopPropagation()">
           <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
           <span class="qty-value">${p.qty}</span>
