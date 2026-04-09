@@ -470,7 +470,7 @@
     const selected = products.filter(p => p.qty > 0);
     const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
     const productList = selected.map(p => p.name).join(', ');
-    const description = `Naam: ${naam}\nTelefoonnummer: ${tel}\nProduct: ${productList}`;
+    const description = `${naam} - ${tel} - ${productList}`;
     const bunqUrl = `https://bunq.me/KURBAN2026/${total}/${encodeURIComponent(description)}`;
 
     products.forEach(p => p.qty = 0);
