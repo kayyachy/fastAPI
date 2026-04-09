@@ -462,7 +462,7 @@
   function checkout() {
     const naam  = document.getElementById('klantNaam').value.trim();
     const tel   = document.getElementById('klantTel').value.trim();
-    const vekil = document.getElementById('klantVekil').value.trim() || 'FARKETMEZ';
+    const vekil = document.getElementById('klantVekil').value.trim();
 
     // Validate fields
     let valid = true;
@@ -475,7 +475,8 @@
     const selected = products.filter(p => p.qty > 0);
     const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
     const productList = selected.map(p => `${p.qty}x ${p.name}`).join(', ');
-    const description = `${naam} - ${tel} - Vekil: ${vekil} - ${productList}`;
+    const vekilDeel = vekil ? ` - Vekil: ${vekil}` : '';
+    const description = `${naam} - ${tel}${vekilDeel} - ${productList}`;
     const bunqUrl = `https://bunq.me/GEVENDEHAND/${total}/${encodeURIComponent(description)}`;
 
     products.forEach(p => p.qty = 0);
