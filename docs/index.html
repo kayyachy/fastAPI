@@ -474,10 +474,10 @@
 
     const selected = products.filter(p => p.qty > 0);
     const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
-    const productList = selected.map(p => `${p.qty}x ${p.name}`).join(', ');
-    const vekilDeel = vekil ? ` - Vekil: ${vekil}` : '';
-    const description = `${naam} - ${tel}${vekilDeel} - ${productList}`;
-    const bunqUrl = `https://bunq.me/GEVENDEHAND/${total}/${encodeURIComponent(description)}`;
+    const productList = selected.map(p => `${p.qty}x${p.name}`).join('-');
+    const vekilDeel = vekil ? `-Vekil-${vekil}` : '-Vekil-FARKETMEZ';
+    const description = `${naam}-${tel}${vekilDeel}-${productList}`;
+    const bunqUrl = `https://bunq.me/GEVENDEHAND/${total}/${encodeURIComponent(description).replace(/%20/g, '+').replace(/%2C/g, ',')}`;
 
     products.forEach(p => p.qty = 0);
     document.getElementById('klantNaam').value = '';
