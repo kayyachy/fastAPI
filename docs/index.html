@@ -469,7 +469,7 @@
 
     const selected = products.filter(p => p.qty > 0);
     const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
-    const productList = selected.map(p => p.name).join(', ');
+    const productList = selected.map(p => `${p.qty}x ${p.name}`).join(', ');
     const description = `${naam} - ${tel} - ${productList}`;
     const bunqUrl = `https://bunq.me/GEVENDEHAND/${total}/${encodeURIComponent(description)}`;
 
