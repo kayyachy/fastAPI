@@ -372,9 +372,9 @@
 
   // Seed a few example products
   const products = [
-    { id: 1, name: 'Laptop',    icon: '💻', qty: 0 },
-    { id: 2, name: 'Monitor',   icon: '🖥️', qty: 0 },
-    { id: 3, name: 'Toetsenbord', icon: '⌨️', qty: 0 },
+    { id: 1, name: 'Eten',   icon: '🍽️', qty: 0 },
+    { id: 2, name: 'Sadaka', icon: '🤲', qty: 0 },
+    { id: 3, name: 'Zekat',  icon: '💝', qty: 0 },
   ];
 
   let nextId = 4;
@@ -471,7 +471,7 @@
     const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
     const productList = selected.map(p => p.name).join(', ');
     const description = `${naam} - ${tel} - ${productList}`;
-    const bunqUrl = `https://bunq.me/KURBAN2026/${total}/${encodeURIComponent(description)}`;
+    const bunqUrl = `https://bunq.me/GEVENDEHAND/${total}/${encodeURIComponent(description)}`;
 
     products.forEach(p => p.qty = 0);
     document.getElementById('klantNaam').value = '';
