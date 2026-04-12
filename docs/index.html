@@ -372,13 +372,11 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  const PRICE = 1; // € per stuk
-
   // Seed a few example products
   const products = [
-    { id: 1, name: 'Eten',   icon: '🍽️', qty: 0 },
-    { id: 2, name: 'Sadaka', icon: '🤲', qty: 0 },
-    { id: 3, name: 'Zekat',  icon: '💝', qty: 0 },
+    { id: 1, name: 'Eten',   icon: '🍽️', qty: 0, price: 1 },
+    { id: 2, name: 'Sadaka', icon: '🤲', qty: 0, price: 2 },
+    { id: 3, name: 'Zekat',  icon: '💝', qty: 0, price: 3 },
   ];
 
   let nextId = 4;
@@ -395,7 +393,7 @@
     if (products.find(p => p.name.toLowerCase() === name.toLowerCase())) {
       showToast('Dit product bestaat al.'); return;
     }
-    products.push({ id: nextId++, name, icon: randomIcon(), qty: 0 });
+    products.push({ id: nextId++, name, icon: randomIcon(), qty: 0, price: 1 });
     input.value = '';
     renderGrid();
     showToast(`"${name}" toegevoegd!`);
@@ -423,7 +421,7 @@
         <span class="checkmark">✅</span>
         <span class="product-icon">${p.icon}</span>
         <span class="product-name">${escHtml(p.name)}</span>
-        <span class="product-price">€ ${PRICE.toLocaleString('nl-NL', {minimumFractionDigits:2})},- / stuk</span>
+        <span class="product-price">€ ${p.price.toLocaleString('nl-NL', {minimumFractionDigits:2})},- / stuk</span>
         <div class="qty-controls" onclick="event.stopPropagation()">
           <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
           <span class="qty-value">${p.qty}</span>
@@ -446,12 +444,12 @@
       return;
     }
 
-    const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
+    const total = selected.reduce((sum, p) => sum + p.qty * p.price, 0);
 
     cartDiv.innerHTML = selected.map(p => `
       <div class="cart-line">
         <span class="line-name">${escHtml(p.icon)} ${escHtml(p.name)} × ${p.qty}</span>
-        <span class="line-total">€ ${(p.qty * PRICE).toLocaleString('nl-NL')},00</span>
+        <span class="line-total">€ ${(p.qty * p.price).toLocaleString('nl-NL')},00</span>
       </div>
     `).join('');
 
@@ -473,7 +471,7 @@
     if (!valid) { showToast('Vul je naam en telefoonnummer in.'); return; }
 
     const selected = products.filter(p => p.qty > 0);
-    const total = selected.reduce((sum, p) => sum + p.qty * PRICE, 0);
+    const total = selected.reduce((sum, p) => sum + p.qty * p.price, 0);
     const productList = selected.map(p => `${p.qty}x${p.name}`).join('-');
     const vekilDeel = vekil ? `-Vekil-${vekil}` : '-Vekil-FARKETMEZ';
     const description = `${naam}-${tel}${vekilDeel}-${productList}`;
